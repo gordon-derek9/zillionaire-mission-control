@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/zillionaire-mission-control/static/css/main.a0ef8f4e.css",
+    "main.js": "/zillionaire-mission-control/static/js/main.bcf0e7ca.js",
+    "static/js/453.1a95ce5c.chunk.js": "/zillionaire-mission-control/static/js/453.1a95ce5c.chunk.js",
+    "index.html": "/zillionaire-mission-control/index.html",
+    "main.a0ef8f4e.css.map": "/zillionaire-mission-control/static/css/main.a0ef8f4e.css.map",
+    "main.bcf0e7ca.js.map": "/zillionaire-mission-control/static/js/main.bcf0e7ca.js.map",
+    "453.1a95ce5c.chunk.js.map": "/zillionaire-mission-control/static/js/453.1a95ce5c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a0ef8f4e.css",
+    "static/js/main.bcf0e7ca.js"
+  ]
+}
