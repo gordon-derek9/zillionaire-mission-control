@@ -1,42 +1,51 @@
 import { useState } from 'react';
 
 function Contact() {
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [comments, setComments] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // For now we just log the data
     console.log({
-      name,
+      firstName,
+      lastName,
       email,
-      message,
+      comments,
     });
 
-    // Clear form after submit
-    setName('');
+    setFirstName('');
+    setLastName('');
     setEmail('');
-    setMessage('');
+    setComments('');
   };
 
   return (
     <div className="card">
-      <h2 className="pageTitle">Contact Zillionaire Tech</h2>
+      <h2 className="pageTitle">Contact Zillionaire Tech HQ</h2>
 
       <form className="missionForm" onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Your Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          placeholder="First Name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          required
+        />
+
+        <input
+          type="text"
+          placeholder="Last Name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
           required
         />
 
         <input
           type="email"
-          placeholder="Your Email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -44,17 +53,16 @@ function Contact() {
 
         <input
           type="text"
-          placeholder="Your Message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          placeholder="Comments"
+          value={comments}
+          onChange={(e) => setComments(e.target.value)}
           required
         />
 
-        <button type="submit">Send Message</button>
+        <button type="submit">Send</button>
       </form>
     </div>
   );
 }
 
 export default Contact;
-
