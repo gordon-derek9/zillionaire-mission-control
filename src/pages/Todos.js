@@ -7,7 +7,6 @@ function Todos() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (newTodo.trim() === '') return;
 
     setTodos([...todos, { text: newTodo, completed: false }]);
@@ -27,51 +26,77 @@ function Todos() {
   const filteredTodos = todos.filter((todo) => {
     if (filter === 'completed') return todo.completed;
     if (filter === 'incomplete') return !todo.completed;
-    return true; // all
+    return true;
   });
 
   return (
     <div>
-      <h2>Mission Board</h2>
+      <h2 className="pageTitle">Mission Board</h2>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter new mission"
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
-        />
-        <button type="submit">Add Mission</button>
-      </form>
+      <div className="missionGrid">
+        {/* Left column */}
+        <div className="card">
+          <form className="missionForm" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Enter new mission"
+              value={newTodo}
+              onChange={(e) => setNewTodo(e.target.value)}
+            />
+            <button type="submit">Add</button>
+          </form>
 
-      <div style={{ marginTop: '10px' }}>
-        <button onClick={() => setFilter('all')}>All</button>
-        <button onClick={() => setFilter('completed')}>Completed</button>
-        <button onClick={() => setFilter('incomplete')}>Incomplete</button>
-      </div>
-
-      <ul>
-        {filteredTodos.map((todo, index) => (
-          <li key={index}>
-            <span
-              onClick={() => toggleComplete(index)}
-              style={{
-                textDecoration: todo.completed ? 'line-through' : 'none',
-                cursor: 'pointer',
-                marginRight: '10px',
-              }}
+          <div className="filters">
+            <button
+              className={filter === 'all' ? 'active' : ''}
+              onClick={() => setFilter('all')}
             >
-              {todo.text}
-            </span>
-
-            <button type="button" onClick={() => removeTodo(index)}>
-              Remove
+              All
             </button>
-          </li>
-        ))}
-      </ul>
+            <button
+              className={filter === 'completed' ? 'active' : ''}
+              onClick={() => setFilter('completed')}
+            >
+              Completed
+            </button>
+            <button
+              className={filter === 'incomplete' ? 'active' : ''}
+              onClick={() => setFilter('incomplete')}
+            >
+              Incomplete
+            </button>
+          </div>
+        </div>
+
+        {/* Right column */}
+        <div className="card">
+          <ul className="missionList">
+            {filteredTodos.map((todo, index) => (
+              <li key={index} className="missionItem">
+                <span
+                  className={`missionText ${
+                    todo.completed ? 'completed' : ''
+                  }`}
+                  onClick={() => toggleComplete(index)}
+                >
+                  {todo.text}
+                </span>
+
+                <button
+                  className="removeBtn"
+                  type="button"
+                  onClick={() => removeTodo(index)}
+                >
+                  Remove
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
 
 export default Todos;
+

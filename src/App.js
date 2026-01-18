@@ -7,20 +7,23 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <nav>
-          <Link to="/todos">Todos</Link> |{" "}
+        <nav className="navbar">
+          <Link to="/todos">Todos</Link>
           <Link to="/contact">Contact</Link>
         </nav>
 
-        <h1>Zillionaire Tech – Mission Control</h1>
+        <div className="container">
+          <h1 className="pageTitle">Zillionaire Tech – Mission Control</h1>
 
-        <Routes>
-          <Route path="/todos" element={<Todos />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+          <Routes>
+            <Route path="/todos" element={<Todos />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </div>
       </div>
     </Router>
   );
 }
 
 export default App;
+
